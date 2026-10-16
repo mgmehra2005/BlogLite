@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
+     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
 </head>
 <body style="width: 100vw; height: 100vh; display: flex; justify-content: center; align-items: center;">
     <style>
@@ -89,8 +90,9 @@
         }
     </style>
     <form action="/login" method="post">
+        <h3 class="w-max font-medium text-[32px] cursor-pointer self-center" onclick="window.location.href='{{url_for("routes.home")}}';">BlogLite.in</h3>
         {{ form.hidden_tag() }}
-        <div class="form-group">
+        <div class="form-group flex flex-col">
             {{ form.username.label(class='form-label') }}
             {{ form.username(class="form-input", size=32)}}
             {% for error in form.username.errors %}
@@ -104,11 +106,13 @@
             {% endfor %}
 
             {{ form.submit(class='btn login-btn')}}
+
+            <a href="{{url_for('auth.register')}}" class="mt-2 self-center underline text-blue-700">Create New Account</a>
         </div>
 
         {% with message=get_flashed_messages(with_categories=true)  %}
             {% if message %}
-                {% for category, msg in message %}
+                {% for category, msg in message %}  
                     <div class="alert alert-{{ category }}" role="alert">
                         {{ msg }}
                     </div>

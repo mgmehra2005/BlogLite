@@ -2,3 +2,5 @@
 .env
 /__pycache__
 site.db
+/migrations
+*/__pycache__

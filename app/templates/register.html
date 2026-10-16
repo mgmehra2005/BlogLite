@@ -4,20 +4,20 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Register</title>
+     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
 </head>
 <body style="width: 100vw; height: 100vh; display: flex; justify-content: center; align-items: center;">
     <style>
         form {
-            self-align: center;
             display: flex;
             flex-direction: column;
             position: relative;
-            max-width: 400px;
+            max-width: 500px;
             margin: 0 auto;
             padding: 20px;
-            border: 1px solid #ccc;
+            box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
             border-radius: 5px;
-            background-color: #f9f9f9;
+            /* background-color: #f9f9f9; */
         }
 
         .form-group {
@@ -89,7 +89,9 @@
             color: #0c5460;
         }
     </style>
-    <form action="/register" method="post">
+
+<form action="/register" method="post">
+    <h3 class="w-max font-medium text-[32px] cursor-pointer self-center" onclick="window.location.href='{{url_for("routes.home")}}';">BlogLite.in</h3>
         {{ form.hidden_tag() }}
         <div class="form-group">
             {{ form.username.label(class='form-label') }}
@@ -117,6 +119,8 @@
             {% endfor %}
 
             {{ form.submit(class='btn login-btn')}}
+
+            <a href="{{url_for('auth.login')}}" class="mt-2 self-center underline text-blue-700">Already! Have a Account</a>
         </div>
 
         {% with message=get_flashed_messages(with_categories=true)  %}
@@ -129,6 +133,5 @@
             {% endif %}
         {% endwith %}
     </form>
-
 </body>
 </html>

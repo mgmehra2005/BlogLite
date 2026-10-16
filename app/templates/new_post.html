@@ -1,0 +1,27 @@
+{% extends 'base.html' %} 
+{% block title %} New Post {% endblock %} 
+{% block content %}
+<h1 class="text-[26px] font-bold mb-5">New Post</h1>
+<div class="flex flex-col w-[80%] self-center p-1 h-full">
+
+<form action="/post/new" method="post" class="flex flex-col w-full h-full">
+  {{ blog_form.hidden_tag()}}
+
+  <div class="flex flex-col">
+    {{blog_form.title(class='border-[0_0_1px_0] border-black/50 w-[100%] pt-1 mt-1 text-[32px] focus:outline-0', value="Title")}}
+     {% for error in blog_form.title.erros %}
+        <span class="form-error">{{error}}</span>
+    {% endfor %}
+  </div>
+
+  <div class="mt-6 flex flex-col w-full h-full">
+    {{ blog_form.blog(class='focus:outline-0 h-[100%] resize-none', placeholder="Write here.....")}}
+    {% for error in blog_form.blog.erros %}
+        <span class="form-error">{{error}}</span>
+    {% endfor %}
+  </div>    
+
+  {{ blog_form.publish(class='self-start bg-black text-white font-semibold px-3 py-2 rounded-[10px] hover:bg-black/50') }}
+</form>
+</div>
+{% endblock %}
