@@ -15,7 +15,7 @@ This project is a small blog application built for sharing ideas, stories, and u
 - Clean and minimal design
 - Easy-to-use dashboard for content management
 
-## Demo site
+<!-- ## Demo site
 
 Add the live demo link here:
 
@@ -23,8 +23,4 @@ Demo: [Your demo link here]
 
 ## Screenshot
 
-Add a screenshot of the app here:
-
-![BlogLite screenshot](./screenshot.png)
-
-If you want, you can replace the placeholder text with your actual demo URL and add your project screenshot in the same folder.
+![BlogLite screenshot](./screenshot.png) -->
