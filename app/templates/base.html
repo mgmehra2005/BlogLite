@@ -38,7 +38,7 @@
         }
     </style>
 </head>
-<body class="w-[100vw] h-[100vh] items-center flex-col flex">
+<body class="w-[100vw] h-[100vh] items-center flex-col flex border-box overflow-x-hidden relative">
     <header class="w-full flex-col flex justify-between items-center">
         <div class="w-full flex justify-between items-center gap-4 shadow-[0_-2px_6px] w-full h-full shadow-black/40 py-3 px-12">
             <h3 class="w-max font-medium text-[32px] cursor-pointer" onclick="window.location.href='{{url_for("routes.home")}}';">BlogLite</h3>
@@ -72,13 +72,11 @@
             {% endif %}
         {% endwith %}
     </header>
-    <main class="p-4 w-[60%] h-full flex flex-col">
+    <main class="p-4 w-[60%] h-full flex flex-col pb-5 relative">
         {% block content %}
         {% endblock %}
     </main>
 
-    <footer>
 
-    </footer>
 </body>
 </html>

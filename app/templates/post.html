@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    {{post.title}}
+{% endblock %}
+
+{% block content %}
+    <section class="flex flex-col w-[80%] self-center p-1 h-full pb-5 relative">
+        <div class="flex flex-col h-content pb-5 gap-4 border-b-1 border-black/30">
+            <h1 class="text-[32px] font-bold">{{post.title}}</h1>
+            <div class="flex justify-between w-full">
+                <span class="text-[#9c9c9c]">Author: <a href="" class="text-black">{{post.author.username}}</a></span>
+                <span class="text-[#9c9c9c]">Published on <span class="text-black">{{ post.created_at.strftime("%d-%m-%Y") }}</span></span>
+            </div>
+            <p>
+                {{ post.body }}
+            </p>
+        </div>
+        <div class="flex justify-between py-4">
+            <span class="">Likes: {{post.likes}}</span>
+            <span class="">Views: {{post.views}}</span>
+        </div>
+        <!-- Comment Section -->
+         <div class="flex flex-col w-full">
+            <h2 class="text-[28px]">Comment</h2>
+            <form action="{{ url_for('blog.fetch_post', post_id=post.id) }}" method="post" class="w-full flex justify-between gap-4 mb-8 mt-5">
+                {{ comment_form.hidden_tag() }}
+
+                {{ comment_form.comment(class='focus:outline-0 border-b-1 border-black/30 w-full px-1 py-2', placeholder='Your views here') }}
+                {{ comment_form.post( class='text-[16px] bg-black text-white px-5 py-1 rounded-2xl font-medium hover:bg-black/40 hover:text-black cursor-pointer') }}
+            </form>
+         </div>
+
+         <div class="flex flex-col gap-6 pb-5">
+            {% if comments %}
+                {% for comment in comments %}
+                    <div class="flex flex-col">
+                        <div class="flex justify-between mb-3">
+                            <h4 class="text-black/40">{{ comment.author.username }}</h4>
+                            <span class="text-black/40">{{ comment.created_at.strftime("%d-%m-%Y") }}</span>
+                        </div>
+                        <p>{{ comment.comment }}</p>
+                    </div>
+                {% endfor %}
+            {% endif %}
+         </div>
+    </section>
+{% endblock %}
+

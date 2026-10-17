@@ -21,11 +21,13 @@ ALLOWED_HOSTS = ['https://localhost:3000']
 def create_app():
     app = Flask(__name__)
 
+    # Setting up the SQLALCHEMY_DATABASE_URI 
     app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///site.db'
+
+    # SQLAlchemy track modifications track for the changes in the models and trigger events on the basis of that it is useful when we need to track changes for logs, otherwise setting it to Flase improves the application performance.
     app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
     app.config['SECRET_KEY'] = os.getenv('SECRET_KEY')
-    print('secret key : ', os.getenv('SECRET_KEY'))
 
     # Configuring CORS for all the request from the domains in the ALLOWED_HOSTS list
     cors.init_app(app, resources={r'/*':{'origins': ALLOWED_HOSTS}})
@@ -35,6 +37,7 @@ def create_app():
     # Migrate app initialization
     migrate.init_app(app, db)
 
+    # This will gonna help flask migrate to update Database Schema 
     import app.models as models
 
     #  Blueprint registration
