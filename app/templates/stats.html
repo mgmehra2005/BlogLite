@@ -1,0 +1,32 @@
+{% extends 'dashboard.html' %} 
+
+{% block title %} Stats Panel {% endblock %} 
+
+{% block dashboard_content %}
+
+    <h1 class="text-[32px] font-bold pb-8 uppercase">Your Stats</h1>
+    <table class="">
+        <thead class="">
+            <tr class="bg-black/40 text-white rounded-2xl text-left">
+                <th class="py-1 pl-4">Title</th>
+                <th class="py-1 text-center">Views</th>
+                <th class="py-1 text-center">Likes</th>
+                <th class="py-1 text-center">Comments</th>
+            </tr>
+        </thead>
+        <tbody class="divide-y-1">
+            {% if posts %}
+                {% for post, total_comments in posts %}
+                    <tr class="hover:bg-black/10 duration-500">
+                        <td class="py-2 pl-2"><a href="{{ url_for('blog.fetch_post', post_id=post.id) }}">{{post.title}}</a></td>
+                        <td class="text-center py-2">{{post.views}}</td>
+                        <td class="text-center py-2">{{post.likes}}</td>
+                        <td class="text-center py-2">{{total_comments}}</td>
+                    </tr>        
+                {% endfor %}
+            {% endif %}
+            
+        </tbody>
+    </table>
+
+{% endblock %}

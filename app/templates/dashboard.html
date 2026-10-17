@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="flex gap-9 justify-between w-full h-full pt-12">
+        <section class="w-[15%] h-full border-r-2 border-black/20">
+            <aside class="pt-3 pr-3">
+                <nav class="flex flex-col gap-3 uppercase">
+                    <a href="{{ url_for('dashboard.user_stats') }}" class="text-[20px] hover:bg-black/10 hover:rounded-2xl py-2 px-3 duration-500">Stats</a>
+                    <a href="{{ url_for('dashboard.user_blogs') }}" class="text-[20px] hover:bg-black/10 hover:rounded-2xl py-2 px-3 duration-500">Blogs</a>
+                </nav>
+            </aside>
+        </section>
+    
+        <section class="flex flex-col w-[80%] self-center p-1 h-full pb-5 relative">
+            {% block dashboard_content %}
+                
+            {% endblock %}
+        </section>
+    </div>
+{% endblock %}

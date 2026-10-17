@@ -1,4 +1,4 @@
-from flask import Blueprint, render_template, redirect, url_for, flash, session
+from flask import Blueprint, render_template, redirect, url_for, flash, session, request
 from app.forms import RegistrationForm, LoginForm
 from app.models import User
 from app import db
@@ -23,7 +23,7 @@ def login():
             # print(str(user.password) == hashlib.md5(password.encode('utf-8')).hexdigest(), "-", hashlib.md5(password.encode('utf-8')).hexdigest() ,"-", user.password)
             if str(user.password) == hashlib.md5(password.encode('utf-8')).hexdigest():
                 session['user'] = username
-                return redirect(url_for('routes.home', user=username))
+                return redirect(url_for('routes.home'))
             else:
                 flash('Invalid password. Please try again.', 'danger')
         else:

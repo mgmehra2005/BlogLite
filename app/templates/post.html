@@ -17,8 +17,8 @@
             </p>
         </div>
         <div class="flex justify-between py-4">
-            <span class="">Likes: {{post.likes}}</span>
-            <span class="">Views: {{post.views}}</span>
+            <a href="{{url_for('blog.update_post_param', type='like', pid=post.id)}}" class="cursor-pointer">👍 {{post.likes}}</a>
+            <span class="">👁 {{post.views}}</span>
         </div>
         <!-- Comment Section -->
          <div class="flex flex-col w-full">
