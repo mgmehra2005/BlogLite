@@ -19,8 +19,11 @@ This project is a small blog application built for sharing ideas, stories, and u
 
 Add the live demo link here:
 
-Demo: [Your demo link here]
+Demo: [Your demo link here] -->
 
 ## Screenshot
 
-![BlogLite screenshot](./screenshot.png) -->
+![BlogLite home page](./screenshots/home.png)
+![BlogLite dashboard page](./screenshots/dashboard.png)
+![BlogLite new post page](./screenshots/new-post.png)
+![BlogLite post page page](./screenshots/post-page.png)
